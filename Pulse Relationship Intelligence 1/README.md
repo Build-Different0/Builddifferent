@@ -1,6 +1,5 @@
 # Pulse
 
-Hey, I am Dania 👋
 
 I built Pulse because important relationships should not quietly go cold just because life gets busy.
 
