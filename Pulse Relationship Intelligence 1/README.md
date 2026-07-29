@@ -39,4 +39,4 @@ A CRM remembers names.
 
 Pulse remembers what matters.
 
-Built with big founder energy by Dania Sami.
+Built with big founder energy 
