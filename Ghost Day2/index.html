@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Ghost is an AI anticipation engine that notices what matters before it becomes a problem." />
+  <meta name="theme-color" content="#080912" />
+  <title>Ghost | AI Anticipation Engine</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="noise" aria-hidden="true"></div>
+  <div class="ambient ambientOne" aria-hidden="true"></div>
+  <div class="ambient ambientTwo" aria-hidden="true"></div>
+  <div class="cursorGlow" id="cursorGlow" aria-hidden="true"></div>
+
+  <div class="appShell">
+    <aside class="sidebar glassPanel">
+      <div class="brandBlock">
+        <div class="ghostLogo" aria-hidden="true">
+          <svg viewBox="0 0 64 64" role="img">
+            <defs>
+              <linearGradient id="ghostGradient" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#ffffff" />
+                <stop offset="48%" stop-color="#c8b6ff" />
+                <stop offset="100%" stop-color="#ff84d1" />
+              </linearGradient>
+            </defs>
+            <path d="M14 30C14 18.4 22.1 10 32 10s18 8.4 18 20v22l-9-5.4L32 52l-9-5.4L14 52V30Z" fill="url(#ghostGradient)" />
+            <ellipse cx="26.5" cy="29" rx="3" ry="4.5" fill="#11121b" />
+            <ellipse cx="37.5" cy="29" rx="3" ry="4.5" fill="#11121b" />
+          </svg>
+        </div>
+        <div class="brandName">GHOST</div>
+        <p>Anticipate. Protect. Stay ahead.</p>
+      </div>
+
+      <nav class="navList" aria-label="Primary navigation">
+        <button class="navItem active" dataView="today">
+          <span class="navIcon">⌂</span>
+          <span>Today</span>
+        </button>
+        <button class="navItem" dataView="signals">
+          <span class="navIcon">⌁</span>
+          <span>Signals</span>
+        </button>
+        <button class="navItem" dataView="calendar">
+          <span class="navIcon">□</span>
+          <span>Calendar</span>
+        </button>
+        <button class="navItem" dataView="travel">
+          <span class="navIcon">✈</span>
+          <span>Travel</span>
+        </button>
+        <button class="navItem" dataView="inbox">
+          <span class="navIcon">✉</span>
+          <span>Inbox</span>
+        </button>
+        <button class="navItem" dataView="people">
+          <span class="navIcon">◎</span>
+          <span>People</span>
+        </button>
+        <button class="navItem" dataView="documents">
+          <span class="navIcon">▤</span>
+          <span>Documents</span>
+        </button>
+      </nav>
+
+      <div class="ghostModeCard">
+        <div class="modeHeader">
+          <span>Ghost Mode</span>
+          <span class="betaPill">BETA</span>
+        </div>
+        <p>Anticipating quietly in the background.</p>
+        <div class="modePulse">
+          <span></span>
+          <i></i>
+        </div>
+      </div>
+    </aside>
+
+    <main class="mainContent">
+      <header class="mobileHeader glassPanel">
+        <div class="mobileBrand">
+          <span class="mobileGhost">G</span>
+          <div>
+            <strong>Ghost</strong>
+            <small>AI Anticipation Engine</small>
+          </div>
+        </div>
+        <button class="iconButton" id="mobileMenuButton" aria-label="Open navigation">☰</button>
+      </header>
+
+      <section class="heroSection reveal">
+        <div class="heroCopy">
+          <div class="dateLabel">MONDAY, JULY 27</div>
+          <h1>Good morning<span>.</span></h1>
+          <p>Here’s what <em>Ghost</em> noticed.</p>
+        </div>
+
+        <div class="ghostOrb" aria-hidden="true">
+          <div class="orbitRing ringOne"></div>
+          <div class="orbitRing ringTwo"></div>
+          <div class="orbitParticle particleOne"></div>
+          <div class="orbitParticle particleTwo"></div>
+          <div class="orbCore">
+            <div class="orbGhost">
+              <span></span>
+              <span></span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="signalSection reveal" id="signalSection">
+        <div class="sectionTop">
+          <div>
+            <span class="sectionKicker">TODAY</span>
+            <h2>What needs attention</h2>
+          </div>
+          <button class="subtleButton" id="refreshSignals">Scan again</button>
+        </div>
+
+        <div class="signalGrid" id="signalGrid"></div>
+      </section>
+
+      <section class="metricBar glassPanel reveal">
+        <article>
+          <div class="metricIcon shieldIcon">◈</div>
+          <div>
+            <strong id="signalMetric">6 signals</strong>
+            <span>actively monitored</span>
+          </div>
+        </article>
+        <article>
+          <div class="metricIcon actionIcon">✓</div>
+          <div>
+            <strong id="actionMetric">3 actions</strong>
+            <span>completed today</span>
+          </div>
+        </article>
+        <article>
+          <div class="metricIcon timeIcon">ϟ</div>
+          <div>
+            <strong id="timeMetric">4h 12m</strong>
+            <span>time protected</span>
+          </div>
+        </article>
+        <div class="pulseLine" aria-hidden="true"></div>
+      </section>
+
+      <div class="everythingElse reveal">
+        Everything else can wait.
+        <span>✦</span>
+      </div>
+
+      <section class="securityBar glassPanel reveal">
+        <div>
+          <span class="securityIcon">▣</span>
+          <p><strong>Secure by design</strong><small>Your data stays private and encrypted.</small></p>
+        </div>
+        <div class="liveStatus">
+          <span class="liveDot"></span>
+          Ghost is watching what matters.
+        </div>
+        <div class="syncStatus">↻ Last sync: just now</div>
+      </section>
+
+      <section class="askDock glassPanel reveal">
+        <div class="askDockCopy">
+          <span class="sectionKicker">GHOST COPILOT</span>
+          <h2>Need the next move?</h2>
+          <p>Ask Ghost what matters, what can wait, or what should be handled without asking.</p>
+        </div>
+        <button class="askGhostButton" id="askGhostButton">
+          <span class="askSpark">✦</span>
+          Ask Ghost
+        </button>
+      </section>
+    </main>
+
+    <aside class="insightsPanel glassPanel reveal">
+      <div class="insightsHeader">
+        <span>✦</span>
+        <h2>Ghost Insights</h2>
+      </div>
+
+      <article class="insightBlock">
+        <span class="insightLabel">Energy window</span>
+        <div class="energyRow">
+          <svg class="energyChart" viewBox="0 0 100 52" aria-hidden="true">
+            <defs>
+              <linearGradient id="energyFill" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#ff72c8" stop-opacity=".45" />
+                <stop offset="100%" stop-color="#8b7cff" stop-opacity=".04" />
+              </linearGradient>
+            </defs>
+            <path d="M0 43 C15 42, 16 12, 34 18 C48 23, 51 40, 67 37 C80 35, 88 16, 100 7 L100 52 L0 52 Z" fill="url(#energyFill)" />
+            <path d="M0 43 C15 42, 16 12, 34 18 C48 23, 51 40, 67 37 C80 35, 88 16, 100 7" fill="none" stroke="#ff72c8" stroke-width="1.7" />
+          </svg>
+          <p>Your focus is highest<br /><strong>10:00 AM to 12:00 PM</strong></p>
+        </div>
+      </article>
+
+      <article class="insightBlock contextRow">
+        <div class="contextGauge">
+          <svg viewBox="0 0 92 92">
+            <circle cx="46" cy="46" r="34" />
+            <circle class="gaugeProgress" cx="46" cy="46" r="34" />
+          </svg>
+          <strong>72%</strong>
+        </div>
+        <div>
+          <span class="insightLabel">Context load</span>
+          <strong class="insightValue">Heavy day</strong>
+          <p>Plan deep work blocks.</p>
+        </div>
+      </article>
+
+      <article class="insightBlock miniInsight">
+        <div class="miniInsightIcon">✈</div>
+        <div>
+          <span class="insightLabel">Travel impact</span>
+          <strong>2h 15m</strong>
+          <p>In transit today</p>
+          <small>2 connections</small>
+        </div>
+      </article>
+
+      <article class="insightBlock miniInsight">
+        <div class="miniInsightIcon messageIcon">•••</div>
+        <div>
+          <span class="insightLabel">Response time</span>
+          <strong>4h 32m</strong>
+          <p>Average reply time</p>
+          <small class="positive">↓ 12%</small>
+        </div>
+      </article>
+
+      <blockquote>
+        “Anticipation is leverage.”
+        <small>Ghost helps you create it.</small>
+      </blockquote>
+    </aside>
+  </div>
+
+  <div class="drawerBackdrop" id="drawerBackdrop"></div>
+
+  <aside class="copilotDrawer" id="copilotDrawer" aria-hidden="true">
+    <div class="drawerHeader">
+      <div>
+        <span class="sectionKicker">GHOST COPILOT</span>
+        <h2>What should happen next?</h2>
+      </div>
+      <button class="iconButton" id="closeDrawer" aria-label="Close Ghost Copilot">×</button>
+    </div>
+
+    <div class="promptChips">
+      <button dataPrompt="priority">What matters most right now?</button>
+      <button dataPrompt="wait">What can wait?</button>
+      <button dataPrompt="handle">What should I handle without asking?</button>
+    </div>
+
+    <div class="copilotConversation">
+      <div class="ghostMessage" id="ghostMessage">
+        I am watching your calendar, inbox, travel, deadlines, and relationships. Ask me where to focus.
+      </div>
+      <div class="typingIndicator" id="typingIndicator" aria-hidden="true">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+
+    <div class="customPrompt">
+      <input id="customPromptInput" type="text" placeholder="Ask Ghost anything..." />
+      <button id="sendPromptButton" aria-label="Send prompt">↗</button>
+    </div>
+  </aside>
+
+  <div class="toast" id="toast" role="status" aria-live="polite">Signal handled.</div>
+
+  <script src="script.js"></script>
+</body>
+</html>
