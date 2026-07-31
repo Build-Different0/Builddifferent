@@ -1,0 +1,38 @@
+<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Send to CEO · AIRLOCK</title><meta name="theme-color" content="#050607"><link rel="icon" href="favicon.svg">
+    <link rel="stylesheet" href="style.css"></head><body>
+    <header class="topnav">
+      <a class="brand" href="index.html"><span class="logo"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="8.2" stroke="currentColor" opacity=".8"/><path d="M8 12h8M12 8v8" stroke="currentColor"/><circle cx="12" cy="12" r="2" fill="currentColor"/></svg></span><span><strong>AIRLOCK</strong><small>EXECUTIVE INPUT SYSTEM</small></span></a>
+      <nav class="navlinks">
+        <a href="index.html">Manifesto</a>
+        <a href="chamber.html">Chamber</a>
+        <a href="brief.html">Executive brief</a>
+        <a href="send.html">Send to CEO</a>
+      </nav>
+      <div class="nav-actions">
+        <button class="btn sound-toggle" id="soundBtn"><i></i><span>Sound on</span></button>
+        <a class="btn primary" href="chamber.html">Enter airlock</a>
+      </div>
+    </header>
+<main class="page"><div class="wrap">
+  <section class="send-stage">
+    <div class="send-orbit">
+      <div class="beam" id="beam"></div>
+      <div class="send-core send-init" id="sendInit"><span class="eyebrow">Final checkpoint</span><h1>Send only what matters.</h1><p>The airlock is sealed. Every object has been cleaned, completed, and prioritised. The CEO will receive one calm brief instead of forty-seven unfinished inputs.</p><button class="btn lime" id="sendBtn">Send to CEO ✦</button></div>
+      <div class="send-core sent" id="sent"><div class="final-mark">✓</div><span class="eyebrow">Transmission complete</span><h1>Attention protected.</h1><p>47 things wanted access. Three earned it. Everything else was handled quietly.</p><a class="btn" href="index.html">Return to manifesto</a></div>
+    </div>
+  </section>
+</div></main>
+<div class="toast" id="toast"></div>
+    <script src="script.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded",()=>{
+ const btn=document.querySelector("#sendBtn"),beam=document.querySelector("#beam"),init=document.querySelector("#sendInit"),sent=document.querySelector("#sent");
+ btn.addEventListener("click",()=>{
+   btn.textContent="Sealing airlock…";tone(300,.1);
+   setTimeout(()=>{beam.classList.add("fire");tone(520,.18,"triangle")},500);
+   setTimeout(()=>{init.classList.add("hide");sent.classList.add("show");tone(920,.35,"sine");localStorage.removeItem("airlock-state")},1800);
+ });
+});
+</script>
+</body></html>

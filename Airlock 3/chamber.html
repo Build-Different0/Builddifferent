@@ -1,0 +1,105 @@
+<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Transformation Chamber · AIRLOCK</title><meta name="theme-color" content="#050607"><link rel="icon" href="favicon.svg">
+    <link rel="stylesheet" href="style.css"></head><body>
+    <header class="topnav">
+      <a class="brand" href="index.html"><span class="logo"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="8.2" stroke="currentColor" opacity=".8"/><path d="M8 12h8M12 8v8" stroke="currentColor"/><circle cx="12" cy="12" r="2" fill="currentColor"/></svg></span><span><strong>AIRLOCK</strong><small>EXECUTIVE INPUT SYSTEM</small></span></a>
+      <nav class="navlinks">
+        <a href="index.html">Manifesto</a>
+        <a href="chamber.html">Chamber</a>
+        <a href="brief.html">Executive brief</a>
+        <a href="send.html">Send to CEO</a>
+      </nav>
+      <div class="nav-actions">
+        <button class="btn sound-toggle" id="soundBtn"><i></i><span>Sound on</span></button>
+        <a class="btn primary" href="chamber.html">Enter airlock</a>
+      </div>
+    </header>
+<main class="page"><div class="wrap">
+  <div class="section-title fade-up"><div><span class="eyebrow">Transformation chamber</span><h1>Turn chaos into finished work.</h1></div><p>Drag any incoming object into the center. AIRLOCK will extract the decision, remove noise, resolve dependencies, and prepare the final executive output.</p></div>
+  <section class="chamber-layout">
+    <aside class="card queue fade-up d1">
+      <div class="card-head"><div><span class="eyebrow">Incoming</span><h3>47 objects</h3></div><span class="pill pulse"><i></i>Live</span></div>
+      <div class="queue-list">
+        <div class="queue-item" draggable="true" data-title="Investor email" data-type="email" data-risk="84">
+          <span class="type-icon">✉</span><strong>Investor email</strong><small>Long thread. Decision hidden inside paragraph six.</small><div class="queue-meta"><span>2 min ago</span><span>High priority</span></div>
+        </div>
+        <div class="queue-item" draggable="true" data-title="Product review" data-type="meeting" data-risk="69">
+          <span class="type-icon">◫</span><strong>Product review</strong><small>60-minute invite. No agenda or clear owner.</small><div class="queue-meta"><span>8 min ago</span><span>Incomplete</span></div>
+        </div>
+        <div class="queue-item" draggable="true" data-title="Airport pickup" data-type="travel" data-risk="57">
+          <span class="type-icon">⌁</span><strong>Airport pickup</strong><small>Driver confirmation missing. Calendar overlap detected.</small><div class="queue-meta"><span>14 min ago</span><span>At risk</span></div>
+        </div>
+        <div class="queue-item" draggable="true" data-title="Hiring thread" data-type="slack" data-risk="44">
+          <span class="type-icon">#</span><strong>Hiring thread</strong><small>23 messages. Three repeated questions. One actual decision.</small><div class="queue-meta"><span>21 min ago</span><span>Noisy</span></div>
+        </div>
+      </div>
+    </aside>
+    <section class="card chamber fade-up d2" id="chamber">
+      <div class="drop-zone" id="dropZone"><div class="drop-copy"><strong>Drop chaos here.</strong><span>Watch AIRLOCK convert an unfinished input into a complete executive action.</span></div></div>
+      <div class="transform-stage" id="transformStage">
+        <div class="transform-title"><span class="eyebrow">Live transformation</span><h2 id="transformName">Investor email</h2><p>Nothing reaches the CEO until it is complete.</p></div>
+        <div class="transform-flow">
+          <div class="transform-step"><span class="step-num">01</span><div><strong>Noise removed</strong><small>Repeated context and low-value detail eliminated.</small></div><span class="check">✓</span></div>
+          <div class="transform-step"><span class="step-num">02</span><div><strong>Decision extracted</strong><small>The exact executive choice is made explicit.</small></div><span class="check">✓</span></div>
+          <div class="transform-step"><span class="step-num">03</span><div><strong>Dependencies resolved</strong><small>Owners, documents, calendar, and timing verified.</small></div><span class="check">✓</span></div>
+          <div class="transform-step"><span class="step-num">04</span><div><strong>Response prepared</strong><small>Reply, next action, and briefing generated.</small></div><span class="check">✓</span></div>
+        </div>
+        <div class="transform-complete" id="transformComplete"><span class="eyebrow">Airlock complete</span><h3>Ready for CEO.</h3><div style="display:flex;justify-content:center;gap:9px;margin-top:14px"><button class="btn lime" id="addBrief">Add to brief</button><button class="btn" id="resetChamber">Process another</button></div></div>
+      </div>
+    </section>
+    <aside class="card inspector fade-up d3">
+      <div class="card-head"><div><span class="eyebrow">Object inspector</span><h3 id="inspectName">Investor email</h3></div><span class="pill">AI scan</span></div>
+      <div class="inspector-section"><span>Hidden request</span><strong id="inspectRequest">Approve revised investor update before 14:00.</strong></div>
+      <div class="inspector-section"><span>Risk if ignored</span><strong id="inspectRiskText">High. External trust and timeline are affected.</strong><div class="risk"><i id="riskBar" style="--w:84%"></i></div></div>
+      <div class="inspector-section"><span>Suggested outcome</span><strong id="inspectOutcome">Condense thread, surface one decision, draft reply, preload context.</strong></div>
+      <div class="inspector-section"><span>Airlock activity</span><div class="activity" id="activity"><div>Object recognised</div><div>Priority confidence 94%</div><div>Executive relevance confirmed</div></div></div>
+    </aside>
+  </section>
+</div></main>
+<div class="toast" id="toast"></div>
+    <script src="script.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded",()=>{
+  const items=[...document.querySelectorAll(".queue-item")],drop=document.querySelector("#dropZone"),
+  stage=document.querySelector("#transformStage"),name=document.querySelector("#transformName"),
+  complete=document.querySelector("#transformComplete"),steps=[...document.querySelectorAll(".transform-step")];
+  let current=null;
+  const info={
+    email:{request:"Approve revised investor update before 14:00.",risk:"High. External trust and timeline are affected.",outcome:"Condense thread, surface one decision, draft reply, preload context."},
+    meeting:{request:"Decide product scope and assign one accountable owner.",risk:"Medium-high. Meeting will consume time without producing a decision.",outcome:"Reduce to 25 minutes, generate agenda, attach pre-read, assign decision owner."},
+    travel:{request:"Confirm driver and resolve the calendar overlap.",risk:"Medium. Delay can cascade into the external meeting.",outcome:"Confirm pickup, create fallback route, adjust buffer, notify stakeholders."},
+    slack:{request:"Choose the next hiring step for one candidate.",risk:"Medium. Team discussion continues without closure.",outcome:"Merge repeated messages, extract evidence, propose decision, draft announcement."}
+  };
+  function inspect(el){
+    current=el;
+    document.querySelector("#inspectName").textContent=el.dataset.title;
+    document.querySelector("#inspectRequest").textContent=info[el.dataset.type].request;
+    document.querySelector("#inspectRiskText").textContent=info[el.dataset.type].risk;
+    document.querySelector("#inspectOutcome").textContent=info[el.dataset.type].outcome;
+    document.querySelector("#riskBar").style.setProperty("--w",el.dataset.risk+"%");
+  }
+  items.forEach(el=>{
+    el.addEventListener("click",()=>inspect(el));
+    el.addEventListener("dragstart",()=>{inspect(el);el.classList.add("dragging");tone(260,.05)});
+    el.addEventListener("dragend",()=>el.classList.remove("dragging"));
+  });
+  ["dragenter","dragover"].forEach(ev=>drop.addEventListener(ev,e=>{e.preventDefault();drop.classList.add("active")}));
+  ["dragleave","drop"].forEach(ev=>drop.addEventListener(ev,e=>{e.preventDefault();drop.classList.remove("active")}));
+  drop.addEventListener("drop",()=>run());
+  drop.addEventListener("click",()=>{if(!current)current=items[0];run()});
+  function run(){
+    if(!current)current=items[0];
+    name.textContent=current.dataset.title;stage.classList.add("active");steps.forEach(s=>s.classList.remove("done"));complete.classList.remove("show");
+    steps.forEach((s,i)=>setTimeout(()=>{s.classList.add("done");tone(380+i*90,.08,"triangle")},650+i*620));
+    setTimeout(()=>{complete.classList.add("show");tone(820,.22,"sine")},3300);
+  }
+  document.querySelector("#resetChamber").addEventListener("click",()=>{stage.classList.remove("active");tone(420,.06)});
+  document.querySelector("#addBrief").addEventListener("click",()=>{
+    const state=JSON.parse(localStorage.getItem("airlock-state")||'{"processed":0,"time":0,"items":[]}');
+    if(!state.items.includes(current.dataset.title)){state.items.push(current.dataset.title);state.processed+=1;state.time+=18}
+    localStorage.setItem("airlock-state",JSON.stringify(state));
+    toast("Added to the executive brief");tone(720,.14);setTimeout(()=>location.href="brief.html",600);
+  });
+});
+</script>
+</body></html>

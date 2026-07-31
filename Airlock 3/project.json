@@ -1,0 +1,19 @@
+{
+  "name": "AIRLOCK",
+  "series": "Builddifferent",
+  "tagline": "Nothing reaches the CEO unfinished.",
+  "pages": [
+    "Manifesto",
+    "Transformation Chamber",
+    "Executive Brief",
+    "Send to CEO"
+  ],
+  "signature_interaction": "Drag unfinished work into the AI chamber and watch it transform live.",
+  "stack": [
+    "HTML",
+    "CSS",
+    "JavaScript",
+    "Web Audio API",
+    "LocalStorage"
+  ]
+}
