@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#010204">
+  <meta name="description" content="KIN turns anonymous software creation journeys into a living intelligence.">
+  <title>KIN · Spatial Origin</title>
+  <link rel="icon" href="favicon.svg">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="spatial-origin.css">
+</head>
+<body class="spatial-origin">
+  <canvas id="spatialCanvas"></canvas>
+  <div id="cursorField" aria-hidden="true"></div>
+
+  <header class="spatial-system-bar">
+    <a class="spatial-wordmark" href="index.html">
+      <span class="spatial-dot"></span>
+      <span>
+        <strong>KIN</strong>
+        <small>ANALYTICS FOR SOFTWARE CREATION</small>
+      </span>
+    </a>
+
+    <div class="system-readout" id="systemReadout">
+      <i></i>
+      <span>system asleep</span>
+    </div>
+
+    <div class="system-actions">
+      <button id="spatialSound" type="button">sound on</button>
+      <button id="skipIntro" type="button">skip intro</button>
+    </div>
+  </header>
+
+  <main class="spatial-stage" id="spatialStage">
+    <section class="spatial-scene scene-seed is-active" id="sceneSeed">
+      <div class="seed-wrap">
+        <button class="seed-heartbeat" id="seedHeartbeat" aria-label="Wake the KIN">
+          <i></i>
+        </button>
+        <p id="seedInstruction">touch the signal</p>
+      </div>
+    </section>
+
+    <section class="spatial-scene scene-loading" id="sceneLoading">
+      <div class="terminal-stream">
+        <p>KIN / SESSION 08.03.26</p>
+        <strong id="terminalLine">awakening creation memory…</strong>
+        <div class="terminal-counter">
+          <span id="journeyCounter">0</span>
+          <small>anonymous creation journeys loaded</small>
+        </div>
+      </div>
+    </section>
+
+    <section class="spatial-scene scene-constellations" id="sceneConstellations">
+      <div class="constellation-label" data-cluster="healthcare">HEALTHCARE</div>
+      <div class="constellation-label" data-cluster="agents">AI AGENTS</div>
+      <div class="constellation-label" data-cluster="fintech">FINTECH</div>
+      <div class="constellation-label" data-cluster="education">EDUCATION</div>
+      <div class="constellation-label" data-cluster="games">GAMES</div>
+      <div class="constellation-label" data-cluster="marketplaces">MARKETPLACES</div>
+      <div class="constellation-caption">
+        <span>creation universe detected</span>
+        <strong>millions of products are teaching software for the next one.</strong>
+      </div>
+    </section>
+
+    <section class="spatial-scene scene-location" id="sceneLocation">
+      <div class="location-marker" id="locationMarker">
+        <i></i>
+        <strong>YOU ARE HERE</strong>
+        <span>marketplace · onboarding stage</span>
+      </div>
+
+      <div class="probability-ribbon">
+        <span>most successful builders move this way</span>
+        <strong>AUTHENTICATION → DATA → PAYMENTS → NARROW BETA</strong>
+        <small>91% learned probability</small>
+      </div>
+    </section>
+
+    <section class="spatial-scene scene-instrument" id="sceneInstrument">
+      <aside class="floating-instrument instrument-search">
+        <span>SEARCH THE UNIVERSE</span>
+        <div>
+          <input id="spatialSearch" value="Marketplace">
+          <button id="spatialSearchButton">reshape</button>
+        </div>
+      </aside>
+
+      <aside class="floating-instrument instrument-intelligence">
+        <span>SOFTWARE INTUITION</span>
+        <strong id="spatialInsight">Authentication before billing produced 48,000 successful marketplace products.</strong>
+        <small id="spatialConfidence">91% confidence · 184,290 journeys compared</small>
+      </aside>
+
+      <aside class="floating-instrument instrument-heartbeat">
+        <span>PROJECT HEARTBEAT</span>
+        <div class="mini-heart"><i></i></div>
+        <strong>healthy momentum</strong>
+        <small>launch probability 78%</small>
+      </aside>
+
+      <nav class="spatial-dock">
+        <a href="universe.html"><i>01</i><span>Creation Universe</span></a><a href="analytics.html"><i>02</i><span>Analytics Lab</span></a>
+        <a href="heartbeat.html"><i>03</i><span>Project Heartbeat</span></a>
+        <a href="species.html"><i>04</i><span>Discovered Lifeforms</span></a>
+        <a href="evolution.html"><i>05</i><span>Evolution Mode</span></a>
+        <a href="laws.html"><i>06</i><span>Emergent Laws</span></a>
+        <a href="futures.html"><i>07</i><span>Probability Waves</span></a>
+        <a href="memory.html"><i>08</i><span>Creation Memory</span></a>
+      </nav>
+
+      <div class="spatial-guidance">
+        <span>move your cursor to bend the universe</span>
+        <strong>click any star to enter its creation memory</strong>
+      </div>
+    </section>
+
+    <section class="spatial-scene scene-dive" id="sceneDive">
+      <div class="journey-tunnel">
+        <div class="journey-node" style="--i:0"><span>IDEA</span><small>marketplace for local experts</small></div>
+        <div class="journey-node" style="--i:1"><span>PROMPT 01</span><small>define the core exchange</small></div>
+        <div class="journey-node" style="--i:2"><span>PROMPT 07</span><small>reduce onboarding friction</small></div>
+        <div class="journey-node" style="--i:3"><span>DATABASE</span><small>stabilize the transaction model</small></div>
+        <div class="journey-node" style="--i:4"><span>AUTHENTICATION</span><small>identity before billing</small></div>
+        <div class="journey-node" style="--i:5"><span>PAYMENTS</span><small>clean transaction states</small></div>
+        <div class="journey-node" style="--i:6"><span>LAUNCH</span><small>first 100 users</small></div>
+        <div class="journey-node" style="--i:7"><span>10,000 USERS</span><small>the path becomes knowledge</small></div>
+      </div>
+      <button class="exit-memory" id="exitMemory">exit creation memory</button>
+    </section>
+  </main>
+
+  <div class="spatial-toast" id="spatialToast"></div>
+
+  <script src="script.js"></script>
+  <script src="spatial-origin.js"></script>
+</body>
+</html>

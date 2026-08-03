@@ -1,0 +1,126 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Analytics Lab · KIN</title>
+<link rel="icon" href="favicon.svg">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<canvas id="space"></canvas>
+<header class="top">
+  <a class="brand" href="index.html"><span class="mark"></span><span><strong>KIN</strong><small>COLLECTIVE BUILD INTELLIGENCE</small></span></a>
+  <nav class="nav">
+    <a href="index.html">Origin</a><a href="universe.html">Universe</a><a href="analytics.html" class="active">Analytics Lab</a>
+    <a href="heartbeat.html">Heartbeat</a><a href="species.html">Cohorts</a><a href="evolution.html">Trends</a>
+    <a href="laws.html">Patterns</a><a href="futures.html">Prediction</a><a href="memory.html">Replay</a>
+  </nav>
+  <div class="actions"><button class="btn sound" id="soundBtn"><i></i><span>Sound on</span></button><a class="btn primary" href="universe.html">Enter graph</a></div>
+</header>
+
+<main class="page"><div class="wrap">
+  <div class="title"><div><span class="eye">Analytics engineer workspace</span><h1>Turn creation behavior into product intelligence.</h1></div>
+  <p>KIN analyzes privacy preserving, anonymous software creation sequences to surface repeatable paths, anomalies, cohorts, trends, and launch predictions.</p></div>
+
+  <section class="analytics-grid">
+    <article class="card analytics-card">
+      <span class="analytics-label">Most repeated successful path</span>
+      <h3>Authentication → Data → Payments → Launch</h3>
+      <div class="analytics-kpi">48,291</div>
+      <p>Observed successful completions across marketplace builders with similar intent.</p>
+      <div class="bar"><i style="--w:94%"></i></div>
+      <div class="tags"><span>94% confidence</span><span>1.2M sessions</span></div>
+    </article>
+
+    <article class="card analytics-card">
+      <span class="analytics-label">Live anomaly detection</span>
+      <div class="signal anomaly"><strong>Unusual creation pattern detected</strong><small>Only 0.3% of successful projects skip authentication before transaction logic.</small></div>
+      <div class="signal"><strong>Trend shift</strong><small>AI agent builders now integrate memory before external tools.</small></div>
+      <div class="signal"><strong>New cohort emerging</strong><small>Recursive builders show 19% lower rework after launch.</small></div>
+    </article>
+
+    <article class="card analytics-card">
+      <span class="analytics-label">Cluster activity heatmap</span>
+      <div class="heatmap">
+        <div class="heat-row"><span>AI Agents</span><i style="--w:96%"></i><strong>2.1M</strong></div>
+        <div class="heat-row"><span>Marketplaces</span><i style="--w:78%"></i><strong>1.2M</strong></div>
+        <div class="heat-row"><span>Fintech</span><i style="--w:66%"></i><strong>930K</strong></div>
+        <div class="heat-row"><span>Healthcare</span><i style="--w:54%"></i><strong>740K</strong></div>
+        <div class="heat-row"><span>Education</span><i style="--w:43%"></i><strong>620K</strong></div>
+      </div>
+    </article>
+  </section>
+
+  <section class="analytics-grid">
+    <article class="card analytics-card">
+      <span class="analytics-label">Builder cohorts</span>
+      <table class="cohort-table">
+        <thead><tr><th>Cohort</th><th>Share</th><th>Ship rate</th></tr></thead>
+        <tbody>
+          <tr><td>Solo builders</td><td>42%</td><td>57%</td></tr>
+          <tr><td>Teams</td><td>37%</td><td>83%</td></tr>
+          <tr><td>Agencies</td><td>21%</td><td>69%</td></tr>
+        </tbody>
+      </table>
+    </article>
+
+    <article class="card analytics-card">
+      <span class="analytics-label">Path confidence</span>
+      <div class="signal"><strong>Authentication → Data</strong><small>98% confidence · strong edge</small></div>
+      <div class="signal"><strong>Data → Payments</strong><small>63% confidence · moderate edge</small></div>
+      <div class="signal anomaly"><strong>Payments → Identity</strong><small>14% confidence · high risk edge</small></div>
+    </article>
+
+    <article class="card analytics-card">
+      <span class="analytics-label">Live success score</span>
+      <div class="analytics-kpi" id="liveScore">78%</div>
+      <p>Current probability of reaching a published application based on this journey.</p>
+      <button class="btn glow" id="applyStep" style="margin-top:18px">Apply authentication step</button>
+      <div class="tags"><span id="scoreDelta">baseline</span><span>continuously updating</span></div>
+    </article>
+  </section>
+
+  <section class="card pad" style="margin-top:16px">
+    <span class="eye">Query console</span>
+    <div class="analytics-console">
+      <input id="analyticsQuery" value="Show fintech projects that reached 10k users">
+      <button id="runQuery">Run query</button>
+    </div>
+    <div class="analytics-result">
+      <span class="eye">Result</span>
+      <h3 id="queryTitle">12,842 matching creation journeys</h3>
+      <p id="queryResult">The strongest repeated pattern is: stable ledger states, authentication, recovery design, payments, then a narrow launch.</p>
+    </div>
+  </section>
+</div></main>
+
+<div class="toast" id="toast"></div>
+<script src="script.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded",()=>{
+  document.querySelector("#applyStep").addEventListener("click",()=>{
+    document.querySelector("#liveScore").textContent="91%";
+    document.querySelector("#scoreDelta").textContent="+13% after authentication";
+    toast("Launch probability updated");
+    tone(880,.18);
+  });
+  document.querySelector("#runQuery").addEventListener("click",()=>{
+    const q=document.querySelector("#analyticsQuery").value.toLowerCase();
+    if(q.includes("similar")){
+      document.querySelector("#queryTitle").textContent="84,120 similar builder journeys";
+      document.querySelector("#queryResult").textContent="The closest successful cohort stabilizes the data model before connecting payments and launches a narrow beta within 10 days.";
+    }else if(q.includes("health")){
+      document.querySelector("#queryTitle").textContent="9,430 healthcare journeys";
+      document.querySelector("#queryResult").textContent="Trust, consent, and onboarding validation appear before clinical feature depth in the strongest paths.";
+    }else{
+      document.querySelector("#queryTitle").textContent="12,842 matching creation journeys";
+      document.querySelector("#queryResult").textContent="The strongest repeated pattern is: stable ledger states, authentication, recovery design, payments, then a narrow launch.";
+    }
+    toast("Query complete");
+    tone(710,.1);
+  });
+});
+</script>
+</body>
+</html>
