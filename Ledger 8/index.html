@@ -1,0 +1,362 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#ebe7df">
+  <meta name="description" content="LEDGER is a live assurance operating system for GRC teams.">
+  <title>LEDGER · Compliance that never sleeps</title>
+  <link rel="icon" href="favicon.svg">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="app">
+  <header class="topbar">
+    <a class="brand" href="#" aria-label="Ledger home">
+      <span class="mark">L</span>
+      <span><strong>LEDGER</strong><small>LIVE ASSURANCE OS</small></span>
+    </a>
+
+    <div class="workspace-switcher">
+      <span class="workspace-dot"></span>
+      <strong>Northstar AB</strong>
+      <small>Production</small>
+    </div>
+
+    <div class="top-actions">
+      <button class="keyboard-hint" id="openCommand">⌘ K</button>
+      <button class="icon-btn" id="toggleSound" aria-label="Toggle sound">◌</button>
+      <button class="avatar">MC</button>
+    </div>
+  </header>
+
+  <nav class="viewbar" aria-label="Main views">
+    <button class="view-tab active" data-view="today">Today</button>
+    <button class="view-tab" data-view="controls">Controls</button>
+    <button class="view-tab" data-view="replay">Replay</button>
+    <button class="view-tab" data-view="auditor">Auditor</button>
+    <div class="readiness">
+      <span>Audit readiness</span>
+      <strong id="readinessValue">96.8%</strong>
+      <i><b id="readinessBar"></b></i>
+    </div>
+  </nav>
+
+  <main>
+    <section class="view active" id="view-today">
+      <div class="briefing">
+        <div>
+          <span class="overline">THURSDAY · LIVE ASSURANCE</span>
+          <h1>Good morning, Maya.</h1>
+          <p>Two controls lost confidence overnight. One vendor certificate expires tomorrow.</p>
+        </div>
+        <div class="briefing-numbers">
+          <div><span>HEALTHY</span><strong>43</strong></div>
+          <div><span>ATTENTION</span><strong>2</strong></div>
+          <div><span>OVERDUE</span><strong>1</strong></div>
+        </div>
+      </div>
+
+      <div class="layout">
+        <section class="ledger-panel">
+          <div class="section-head">
+            <div><span class="overline">TODAY</span><h2>Assurance ledger</h2></div>
+            <div class="filters">
+              <button class="filter active" data-filter="all">All</button>
+              <button class="filter" data-filter="attention">Attention</button>
+              <button class="filter" data-filter="automated">Automated</button>
+            </div>
+          </div>
+
+          <div class="event-list" id="eventList">
+            <article class="event automated" data-event="github">
+              <div class="event-time">09:12</div>
+              <div class="event-icon ok">✓</div>
+              <div class="event-main">
+                <div class="event-title"><strong>GitHub SSO validated</strong><span>Confidence +2%</span></div>
+                <p>Organization SSO configuration and repository membership were collected through the GitHub API.</p>
+                <div class="event-meta"><span>CC6.1</span><span>CC6.2</span><span>ISO A.5.15</span><span>API sourced</span></div>
+              </div>
+              <button class="expand-btn" aria-label="Expand event">+</button>
+              <div class="event-detail">
+                <div class="detail-grid">
+                  <div><span>STRENGTH</span><strong>94%</strong></div>
+                  <div><span>FRESHNESS</span><strong>100%</strong></div>
+                  <div><span>COVERAGE</span><strong>100%</strong></div>
+                  <div><span>TAMPER RESISTANCE</span><strong>97%</strong></div>
+                </div>
+                <div class="lineage">
+                  <span>GitHub API</span><i></i><span>Connector</span><i></i><span>Validation</span><i></i><span>CC6.1</span>
+                </div>
+                <div class="ai-note good"><b>AI observation</b><p>Evidence proves SSO is enabled and covers the complete repository population. No action required.</p></div>
+              </div>
+            </article>
+
+            <article class="event attention" data-event="okta">
+              <div class="event-time">09:45</div>
+              <div class="event-icon warn">!</div>
+              <div class="event-main">
+                <div class="event-title"><strong>Okta policy changed</strong><span>3 controls affected</span></div>
+                <p>A new administrator was excluded from the enforced MFA policy.</p>
+                <div class="event-meta"><span>CC6.1</span><span>ISO A.5.17</span><span>NIST AC-2</span><span>Owner notified</span></div>
+              </div>
+              <button class="expand-btn" aria-label="Expand event">+</button>
+              <div class="event-detail">
+                <div class="expected-actual">
+                  <div><span>EXPECTED STATE</span><strong>All production administrators use SSO and MFA.</strong></div>
+                  <div><span>ACTUAL STATE</span><strong>14 of 15 administrators comply.</strong></div>
+                </div>
+                <div class="ai-note risk"><b>AI challenge</b><p>The current screenshot would prove only one account. Collect the complete administrator population directly from Okta instead.</p></div>
+                <div class="inline-actions"><button id="createRequest">Create contextual request</button><button class="secondary" id="acceptRisk">Document exception</button></div>
+              </div>
+            </article>
+
+            <article class="event automated" data-event="vendor">
+              <div class="event-time">10:18</div>
+              <div class="event-icon ok">✓</div>
+              <div class="event-main">
+                <div class="event-title"><strong>Vendor certificate refreshed</strong><span>ISO 27001</span></div>
+                <p>CloudPay uploaded a renewed certificate and PROOF matched its scope to the service used by Northstar.</p>
+                <div class="event-meta"><span>Vendor assurance</span><span>14 controls</span><span>Scope verified</span></div>
+              </div>
+              <button class="expand-btn">+</button>
+              <div class="event-detail">
+                <div class="vendor-line"><div><span>VENDOR</span><strong>CloudPay</strong></div><div><span>VALID UNTIL</span><strong>31 May 2027</strong></div><div><span>CRITICALITY</span><strong>High</strong></div></div>
+                <div class="ai-note good"><b>AI observation</b><p>The certificate is current and the certification scope includes the payment service your organization uses.</p></div>
+              </div>
+            </article>
+
+            <article class="event attention" data-event="review">
+              <div class="event-time">11:04</div>
+              <div class="event-icon warn">!</div>
+              <div class="event-main">
+                <div class="event-title"><strong>Access review evidence expires</strong><span>7 days remaining</span></div>
+                <p>The current population contains twelve administrators. Last quarter's review covered eleven.</p>
+                <div class="event-meta"><span>Population changed</span><span>Maya Chen</span><span>Due Aug 13</span></div>
+              </div>
+              <button class="expand-btn">+</button>
+              <div class="event-detail">
+                <div class="population">
+                  <span>POPULATION COVERAGE</span>
+                  <strong>11 / 12</strong>
+                  <i><b style="width:91.7%"></b></i>
+                  <p>One new administrator requires review before the evidence can prove complete coverage.</p>
+                </div>
+                <div class="inline-actions"><button class="sendRequest">Send evidence request</button></div>
+              </div>
+            </article>
+
+            <article class="event automated" data-event="efficiency">
+              <div class="event-time">12:26</div>
+              <div class="event-icon ai">AI</div>
+              <div class="event-main">
+                <div class="event-title"><strong>Manual evidence pattern detected</strong><span>17 hours/month</span></div>
+                <p>Your team uploaded nine screenshots for evidence that one API integration could collect continuously.</p>
+                <div class="event-meta"><span>Efficiency insight</span><span>9 screenshots</span><span>Automation available</span></div>
+              </div>
+              <button class="expand-btn">+</button>
+              <div class="event-detail">
+                <div class="automation-proposal">
+                  <div><span>CURRENT</span><strong>9 screenshots monthly</strong></div>
+                  <div class="arrow">→</div>
+                  <div><span>PROPOSED</span><strong>1 continuous API check</strong></div>
+                </div>
+                <button id="enableAutomation">Enable automation</button>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <aside class="focus-panel">
+          <div class="focus-head"><span class="overline">TODAY'S FOCUS</span><strong>3 actions</strong></div>
+          <article class="focus-item urgent">
+            <span>01</span>
+            <div><strong>Review new Okta administrator</strong><small>CC6.1 · Due today</small></div>
+            <button class="complete-focus">Complete</button>
+          </article>
+          <article class="focus-item">
+            <span>02</span>
+            <div><strong>Renew CloudDesk SOC report</strong><small>Vendor assurance · Due tomorrow</small></div>
+            <button class="complete-focus">Complete</button>
+          </article>
+          <article class="focus-item">
+            <span>03</span>
+            <div><strong>Approve policy AC-01</strong><small>Annual review · Due Friday</small></div>
+            <button class="complete-focus">Complete</button>
+          </article>
+
+          <div class="daily-brief">
+            <span class="overline">AI BRIEF</span>
+            <p>43 controls stayed healthy. Two lost confidence. One evidence request is blocked by an owner. Estimated audit readiness remains above target.</p>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="view" id="view-controls">
+      <div class="view-heading">
+        <div><span class="overline">CONTROL OPERATIONS</span><h1>Living control twins</h1></div>
+        <button id="newControl">New control</button>
+      </div>
+
+      <div class="control-table">
+        <div class="table-row table-head">
+          <span>CONTROL</span><span>DESIGN</span><span>OPERATION</span><span>EVIDENCE</span><span>OWNER</span><span>NEXT EVENT</span>
+        </div>
+        <button class="table-row control-row" data-control="cc61">
+          <span><b>CC6.1</b><small>Logical access</small></span>
+          <span class="status good">Appropriate</span>
+          <span class="status warn">Partial</span>
+          <span><b>82%</b><i class="mini-bar"><em style="width:82%"></em></i></span>
+          <span>Maya Chen</span><span>Review in 7d</span>
+        </button>
+        <button class="table-row control-row" data-control="cc62">
+          <span><b>CC6.2</b><small>User provisioning</small></span>
+          <span class="status good">Appropriate</span>
+          <span class="status good">Consistent</span>
+          <span><b>98%</b><i class="mini-bar"><em style="width:98%"></em></i></span>
+          <span>Aron Lee</span><span>Collect in 21d</span>
+        </button>
+        <button class="table-row control-row" data-control="cc72">
+          <span><b>CC7.2</b><small>Incident monitoring</small></span>
+          <span class="status good">Appropriate</span>
+          <span class="status good">Consistent</span>
+          <span><b>96%</b><i class="mini-bar"><em style="width:96%"></em></i></span>
+          <span>Leo Berg</span><span>Test tomorrow</span>
+        </button>
+        <button class="table-row control-row" data-control="cc81">
+          <span><b>CC8.1</b><small>Change management</small></span>
+          <span class="status warn">Review</span>
+          <span class="status good">Consistent</span>
+          <span><b>88%</b><i class="mini-bar"><em style="width:88%"></em></i></span>
+          <span>Sara Nilsson</span><span>Policy in 14d</span>
+        </button>
+      </div>
+
+      <div class="control-drawer" id="controlDrawer">
+        <div class="drawer-head"><div><span class="overline">CONTROL TWIN</span><h2 id="drawerTitle">CC6.1 · Logical access</h2></div><button id="closeDrawer">×</button></div>
+        <div class="twin-grid">
+          <section>
+            <span>CONTROL OBJECTIVE</span>
+            <p id="drawerObjective">Restrict logical access through identity, authentication, authorization, and periodic review.</p>
+          </section>
+          <section>
+            <span>EXPECTED VS ACTUAL</span>
+            <div class="expected-actual compact">
+              <div><small>EXPECTED</small><strong id="drawerExpected">All administrators use MFA.</strong></div>
+              <div><small>ACTUAL</small><strong id="drawerActual">14 of 15 comply.</strong></div>
+            </div>
+          </section>
+          <section>
+            <span>FRAMEWORK MAPPINGS</span>
+            <div class="mapping-chips"><b>SOC 2 CC6.1</b><b>ISO A.5.15</b><b>NIST AC-2</b><b>Internal AC-01</b></div>
+          </section>
+          <section>
+            <span>EVIDENCE RELIABILITY</span>
+            <div class="reliability-bars">
+              <label>Freshness <i><b style="width:91%"></b></i><em>91%</em></label>
+              <label>Authenticity <i><b style="width:98%"></b></i><em>98%</em></label>
+              <label>Coverage <i><b style="width:93%"></b></i><em>93%</em></label>
+              <label>Independence <i><b style="width:77%"></b></i><em>77%</em></label>
+            </div>
+          </section>
+          <section>
+            <span>OPEN EXCEPTION</span>
+            <div class="exception-card"><strong>One administrator excluded from MFA</strong><small>Residual risk: Medium · Expires Aug 20</small><button id="openException">Manage exception</button></div>
+          </section>
+          <section>
+            <span>OSCAL</span>
+            <p>Machine-readable control, assessment, and evidence metadata is ready for export.</p>
+            <button class="text-btn" id="exportOscal">Export OSCAL</button>
+          </section>
+        </div>
+      </div>
+    </section>
+
+    <section class="view" id="view-replay">
+      <div class="view-heading">
+        <div><span class="overline">ASSURANCE HISTORY</span><h1>Replay the year</h1></div>
+        <div class="replay-date"><span id="replayDate">JAN 15</span><strong id="replayReadiness">89.4%</strong></div>
+      </div>
+
+      <div class="replay-canvas">
+        <div class="replay-summary">
+          <span id="replayType">CREATED</span>
+          <h2 id="replayTitle">Control graph established</h2>
+          <p id="replayDescription">Okta, GitHub, AWS, and policy evidence were connected to CC6.1.</p>
+        </div>
+        <div class="replay-tracks">
+          <div class="track"><span>CC6.1</span><i><b id="track1"></b></i><em id="track1Label">89%</em></div>
+          <div class="track"><span>CC6.2</span><i><b id="track2"></b></i><em id="track2Label">92%</em></div>
+          <div class="track"><span>CC7.2</span><i><b id="track3"></b></i><em id="track3Label">94%</em></div>
+          <div class="track"><span>CC8.1</span><i><b id="track4"></b></i><em id="track4Label">85%</em></div>
+        </div>
+        <div class="year-events">
+          <button data-step="0" class="active"><span>JAN</span><i></i><small>Graph created</small></button>
+          <button data-step="1"><span>MAR</span><i></i><small>Review passed</small></button>
+          <button data-step="2"><span>JUN</span><i></i><small>Policy changed</small></button>
+          <button data-step="3"><span>SEP</span><i></i><small>Evidence expired</small></button>
+          <button data-step="4"><span>OCT</span><i></i><small>Control recovered</small></button>
+          <button data-step="5"><span>DEC</span><i></i><small>Audit ready</small></button>
+        </div>
+        <input id="replaySlider" type="range" min="0" max="5" value="0">
+      </div>
+    </section>
+
+    <section class="view" id="view-auditor">
+      <div class="view-heading">
+        <div><span class="overline">CONTROLLED AUDITOR PORTAL</span><h1>Ask the evidence</h1></div>
+        <button id="generateReport">Generate evidence narrative</button>
+      </div>
+
+      <div class="auditor-layout">
+        <section class="auditor-chat">
+          <div class="suggestions">
+            <button class="ask-suggestion">Why was CC6.1 compliant in May?</button>
+            <button class="ask-suggestion">Show every failed access review.</button>
+            <button class="ask-suggestion">Which evidence came directly from Okta?</button>
+          </div>
+          <div class="chat-log" id="chatLog">
+            <div class="assistant-message">
+              <span>LEDGER</span>
+              <p>Ask about any control, test, exception, population, evidence artifact, or historical decision.</p>
+            </div>
+          </div>
+          <form id="auditorForm">
+            <input id="auditorInput" placeholder="Ask the evidence...">
+            <button>Ask</button>
+          </form>
+        </section>
+
+        <aside class="audit-scope">
+          <span class="overline">AUDIT SCOPE</span>
+          <h2>SOC 2 Type II</h2>
+          <div class="scope-stat"><span>PERIOD</span><strong>Jan 1 to Dec 31</strong></div>
+          <div class="scope-stat"><span>CONTROLS</span><strong>48</strong></div>
+          <div class="scope-stat"><span>ARTIFACTS</span><strong>1,284</strong></div>
+          <div class="scope-stat"><span>EXCEPTIONS</span><strong>3</strong></div>
+          <div class="scope-stat"><span>COVERAGE</span><strong>98.4%</strong></div>
+          <div class="scope-note"><b>Access boundary</b><p>Auditors can inspect evidence and request clarification without accessing the internal GRC workspace.</p></div>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <div class="command-backdrop" id="commandBackdrop">
+    <div class="command-palette">
+      <div class="command-input"><span>⌘</span><input id="commandInput" placeholder="Search controls, owners, systems, evidence..."></div>
+      <div class="command-results" id="commandResults">
+        <button data-command="today"><i>↗</i><span><strong>Go to Today</strong><small>Live operational assurance feed</small></span><kbd>G T</kbd></button>
+        <button data-command="controls"><i>◫</i><span><strong>Open CC6.1</strong><small>Logical access control twin</small></span><kbd>↵</kbd></button>
+        <button data-command="replay"><i>◷</i><span><strong>Replay assurance history</strong><small>Scrub the complete year</small></span><kbd>G R</kbd></button>
+        <button data-command="auditor"><i>?</i><span><strong>Enter Auditor Mode</strong><small>Ask the evidence directly</small></span><kbd>G A</kbd></button>
+      </div>
+      <div class="command-footer"><span>↑↓ navigate</span><span>↵ open</span><span>esc close</span></div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+</div>
+<script src="script.js"></script>
+</body>
+</html>

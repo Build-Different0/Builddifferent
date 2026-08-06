@@ -1,0 +1,14 @@
+{
+  "name": "LEDGER",
+  "day": 8,
+  "role": "GRC Manager",
+  "project": "Evidence Without Audits",
+  "category": "Live assurance operating system",
+  "views": [
+    "Today",
+    "Controls",
+    "Replay",
+    "Auditor"
+  ],
+  "signature": "Compliance that never sleeps."
+}
